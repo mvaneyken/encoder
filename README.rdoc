@@ -1,28 +1,9 @@
-== README
+# encode
+ROR app that maintains scripts that can be used to classify something. The classification can be run on the encode server or downloaded & run on an iOS app (divine).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Development environment
+* Ruby
+* Rails
+* Postgresql
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+WARNING: This is simply a proof of concept. It's not yet ready for prime time.
