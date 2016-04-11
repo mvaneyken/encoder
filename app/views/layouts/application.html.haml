@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title= Settings[:title]
+    %link{href: 'http://fonts.googleapis.com/css?family=Josefin+Slab', rel:'stylesheet', type:'text/css'}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    %meta{name: Settings[:company], content: @meta_tag}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+  %body{data: {location: session[:country].present? ? "#{session[:country]}/#{session[:region]}" : nil}}
+    = render 'shared/navbar'
+    .container{id: "#{controller_name}-#{action_name}"}
+      .row
+        .col-xs-12.col-sm-12.col-md-offset-1.col-md-10.col-lg-offset-1.col-lg-10
+          / = render 'shared/signin'
+          / = render 'shared/alerts'
+          = yield
+          #app-modal.modal.fade{tabindex: '-1', role: 'dialog', aria: {labelledby: 'app-modal-label', hidden: true}}
+      .page-filler
+    / = render 'shared/footer'

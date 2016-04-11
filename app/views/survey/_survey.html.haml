@@ -1,0 +1,11 @@
+- scripts.each do |script|
+  .panel.panel-default
+    .panel-heading{role: 'tab', id: "heading#{script.id}"}
+      .h4.panel-title
+        = link_to script.phrase, "#collapse#{script.id}", role: 'button', data: {toggle: 'collapse', parent: parent}, aria: {expanded: true, controls: "collapse_#{script.id}"}, class: 'collapsed'
+    .panel-collapse.collapse{id: "collapse#{script.id}", role: 'tabpanel', aria: {labelledby: "heading#{script.id}"}}
+      .panel-body
+        - if script.answers.present?
+          = render partial: 'survey', locals: {scripts: script.answers.order(:sequence), parent: "collapse#{script.id}"}
+        - else
+          %p= script.code

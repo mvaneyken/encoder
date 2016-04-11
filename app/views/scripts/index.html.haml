@@ -1,0 +1,27 @@
+.well.well-sm
+  %h2.well-h-up
+    .pull-right.hidden-print= link_to t('button.new', name: Script.model_name.human), new_script_path, class: 'btn btn-default'
+    = t('.title', name: Script.model_name.human.pluralize)
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Script.human_attribute_name(:sequence)
+      %th= Script.human_attribute_name(:phrase)
+      %th.td-right= Script.human_attribute_name(:answers)
+      %th= Script.human_attribute_name(:code)
+      %th.hidden-print= t('label.actions')
+  %tbody
+    - @scripts.each do |script|
+      %tr
+        %td= script.sequence
+        %td= script.phrase
+        %td.td-right= blank_when_zero script.answers.count
+        %td= script.code
+        %td.hidden-print
+          = link_to t('link.show'), script_path(script), class: 'btn btn-xs btn-default'
+          = link_to t('link.edit'), edit_script_path(script), class: 'btn btn-xs btn-default'
+          = link_to t('link.destroy'), script_path(script), method: :delete, data: { confirm: t('message.are_you_sure') }, class: 'btn btn-xs btn-danger'
+
+.paginate.hidden-print
+  = will_paginate(@scripts, renderer: BootstrapPagination::Rails)

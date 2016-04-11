@@ -1,0 +1,26 @@
+#navbar.navbar.navbar-default.navbar-fixed-top.hidden-print.navbar-sm-bottom{role: 'navigation'}
+  .container
+    .row
+      .col-xs-offset-1.col-xs-10.col-lg-offset-1.col-lg-10
+        .navbar-header
+          .btn.btn-default.navbar-btn.navbar-toggle{:'data-toggle' => "collapse", :'data-target' => "#js-nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        #js-nav-collapse.navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'Survey', survey_index_path
+            %li= link_to 'Scripts', scripts_path
+
+          / .navbar-right
+          /   %ul.nav.navbar-nav
+          /     - if I18n.locale == I18n.default_locale
+          /       %li
+          /         = link_to change_locale(:fr), data: {toggle: 'tooltip', placement: 'left'}, title: "français" do
+          /           %i.glyphicon.glyphicon-globe
+          /             %sup.hidden-sm français
+          /     - else
+          /       %li
+          /         = link_to change_locale(:en), data: {toggle: 'tooltip', placement: 'left'}, title: "English" do
+          /           %i.glyphicon.glyphicon-globe
+          /             %sup.hidden-sm English

@@ -1,0 +1,35 @@
+
+- if @script.question
+  %h3= @script.question.phrase
+- else
+  %h3= t('.title', name: Script.model_name.human)
+%hr
+
+%dl.dl-horizontal
+  %dt= Script.human_attribute_name(:sequence)
+  %dd= @script.sequence
+  %dt= Script.human_attribute_name(:phrase)
+  %dd= @script.phrase
+  %dt= Script.human_attribute_name(:code)
+  %dd= @script.code
+
+- if @script.answers.present?
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Sequence
+        %th Phrase
+        %th Code
+        %th Action
+    %tbody
+      - @script.answers.order(:sequence).each do |answer|
+        %tr
+          %td= answer.sequence
+          %td= answer.phrase
+          %td= answer.code
+          %td
+            = link_to 'Edit', edit_script_path(answer), class: 'btn btn-sm btn-default'
+            = link_to 'View', script_path(answer), class: 'btn btn-sm btn-default'
+
+
+= render partial: 'shared/show_edit_links', locals: {edit_path: edit_script_path(@script) }

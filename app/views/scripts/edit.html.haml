@@ -1,0 +1,5 @@
+%h1= t('.title', name: Script.model_name.human)
+
+= render 'form'
+
+= render partial: 'shared/edit_links', locals: {back_path: scripts_path }

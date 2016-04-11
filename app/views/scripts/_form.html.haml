@@ -1,0 +1,23 @@
+#script_form
+  - if @script.question
+    .well.well-sm
+      %h4= @script.question.phrase
+
+  = simple_nested_form_for(@script, class: 'form-horizontal') do |f|
+    = render partial: 'shared/errors', locals: {f: f}
+
+    .form-inputs
+      / = f.input :question, autofocus: true
+      = f.input :sequence
+      = f.input :phrase
+      = f.input :code
+      .well
+        = f.simple_fields_for :answers, f.object.answers.order(:sequence) do |builder|
+          = render partial: 'answer_fields', locals: { f: builder, link_title: t('actions.erase') }
+        %div
+          %br
+          = f.link_to_add t('.add_answer'), :answers, class: "btn btn-xs btn-default"
+
+    %br
+    .form-actions.control-group
+      = f.button :submit, class: 'btn btn-custom'

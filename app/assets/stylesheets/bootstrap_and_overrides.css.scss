@@ -1,0 +1,21 @@
+$navbar-height: 50px;
+$navbar-default-bg: white;
+$navbar-default-border: white;
+$navbar-default-brand-color: red;
+//$navbar-default-link-color: white;
+//$navbar-default-link-hover-color: #9DC209;
+//$navbar-default-link-active-color: #9DC209;
+$navbar-default-link-bg-active: transparent;
+$font-family-base: 'Lucida Sans Unicode', 'Lucida Grande', 'arial', 'sans-serif';
+$font-size-base: 15px;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 50px;
+}
+
+.help-block {
+  color: #337ab7;
+}
